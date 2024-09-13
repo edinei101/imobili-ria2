@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imobiliária - Imóveis Disponíveis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Imobiliária Dois Irmãos</h1>
+        <h2>O imóvel dos seus sonhos está aqui</h2>
+    </header>
+
+    <section class="search-filter">
+        <h3>Filtrar Imóveis</h3>
+        <form id="search-form">
+            <label for="tipo-imovel">Tipo de Imóvel:</label>
+            <select id="tipo-imovel">
+                <option value="todos">Todos</option>
+                <option value="casa">Casa</option>
+                <option value="apartamento">Apartamento</option>
+                <option value="terreno">Terreno</option>
+            </select>
+
+            <label for="localizacao">Localização:</label>
+            <input type="text" id="localizacao" placeholder="Digite a localização">
+
+            <label for="preco">Faixa de Preço:</label>
+            <input type="number" id="preco" placeholder="Valor máximo">
+
+            <button type="submit">Filtrar</button>
+        </form>
+    </section>
+
+    <section class="property-list">
+        <h3>Imóveis Disponíveis</h3>
+        <div class="property-item">
+            <img src="C:\Users\ellen\Downloads\Casa no Bairro Vista Alegre.jpg" alt="Imagem do Imóvel">
+            <h4>Casa no Bairro Vista Alegre</h4>
+            <p>R$ 450.000</p>
+            <a href="detalhes.html?id=1" class="btn">Ver mais detalhes</a>
+            <button>Agendar visita</button>
+        </div>
+
+        <div class="property-item">
+            <img src="C:\Users\ellen\Downloads\Apartamento no Centro.jpg" alt="Imagem do Imóvel">
+            <h4>Apartamento no Centro</h4>
+            <p>R$ 300.000</p>
+            <a href="detalhes.html?id=2" class="btn">Ver mais detalhes</a>
+            <button>Agendar visita</button>
+        </div>
+
+        <div class="property-item">
+            <img src="C:\Users\ellen\Downloads\Casa no Bairo Orleans.jpg" alt="Imagem do Imóvel">
+            <h4>Casa no Bairo Orleans</h4>
+            <p>R$ 235.000</p>
+            <a href="detalhes.html?id=3" class="btn">Ver mais detalhes</a>
+            <button>Agendar visita</button>
+        </div>
+
+        <div class="property-item">
+            <img src="C:\Users\ellen\Downloads\casa capelaço.jfif" alt="Imagem do Imóvel">
+            <h4>Casa no Bairro Capelaço</h4>
+            <p>R$ 110.000</p>
+            <a href="detalhes.html?id=4" class="btn">Ver mais detalhes</a>
+            <button>Agendar visita</button>
+        </div>
+        <div class="property-item">
+            <img src="C:\Users\ellen\Downloads\Apartamento no Bairro União.jfif" alt="Imagem do Imóvel">
+            <h4>Apartamento no Bairro União</h4>
+            <p>R$ 180.000</p>
+            <a href="detalhes.html?id=5" class="btn">Ver mais detalhes</a>
+            <button>Agendar visita</button>
+        </div>
+        <div class="property-item">
+            <img src="C:\Users\ellen\Downloads\Lote Urbano.jpg" alt="Imagem do Imóvel">
+            <h4>Lote Urbano</h4>
+            <p>R$ 65.000</p>
+            <a href="detalhes.html?id=6" class="btn">Ver mais detalhes</a>
+            <button>Agendar visita</button>
+        </div>
+
+        <div class="property-item">
+            <img src="C:\Users\ellen\Downloads\Lote Rural na linha 128.jpg" alt="Imagem do Imóvel">
+            <h4>Sítio Rural na linha 128</h4>
+            <p>R$ 1.250.000</p>
+            <a href="detalhes.html?id=7" class="btn">Ver mais detalhes</a>
+            <button>Agendar visita</button>
+        </div>
+
+        <!-- Adicionar mais imóveis aqui -->
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

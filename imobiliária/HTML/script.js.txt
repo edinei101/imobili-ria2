@@ -1,0 +1,176 @@
+// script.js
+
+// Dados dos imóveis 
+const imoveis = [
+    {
+        id: 1,
+        title: "Casa no Bairro Vista Alegre",
+        price: "R$ 450.000",
+        image: "C:\Users\ellen\Downloads\Casa no Bairro Vista Alegre.jpg",
+        description: "Casa com 120,00m², com 3 quartos, 2 banheiros, sala, área de serviço, cozinha e uma área verde. Proxímo centro de compra e serviços. Possibilidade de financimanto pela Caixa"
+    },
+    {
+        id: 2,
+        title: "Apartamento no Centro",
+        price: "R$ 300.000",
+        image: "C:\Users\ellen\Downloads\Apartamento no Centro.jpg",
+        description: "Apartamento moderno de 60,00m² com 2 quartos, 1 banheiro, sala e cozinha americana, próximo a todas as comodidades do centro da cidade. Pronto para financiar."
+    },
+    {
+        id: 3,
+        title: "Casa no Bairo Orleans",
+        price: "R$ 235.000",
+        image: "C:\Users\ellen\Downloads\Casa no Bairo Orleans.jpg",
+        description: "Casa de 60,00m² com 1 suite, 1 quartos 1 banheiro social, sala e cozinha americana, a 5 minutos do centro de compras e serviços. Pronto para financiar"
+    },
+    {
+        id: 4,
+        title: "Casa no Bairro Capelaço",
+        price: "R$ 110.000",
+        image: "C:\Users\ellen\Downloads\casa capelaço.jfif",
+        description: "Casa com 45,00m², com 2 quartos, 1 banheiros social, sala, cozinha e espaço para ampliação."
+    },
+    {
+        id: 5,
+        title: "Apartamento no Bairro União",
+        price: "R$ 180.000",
+        image: "C:\Users\ellen\Downloads\Apartamento no Bairro União.jfif",
+        description: "Apartamento moderno de 60,00m² com 2 quartos, 1 banheiro, sala e cozinha americana, próximo a todas as comodidades e tranquilidade de um bairro residencial. Pronto para financiar."
+    },
+    {
+        id: 6,
+        title: "Lote Urbano",
+        price: "R$ 65.000",
+        image: "C:\Users\ellen\Downloads\Lote Urbano.jpg",
+        description: "Lote urbano de 300,00m², no Loteamento Residecial Palmeira, terreno plano bem denado, a 5 minutos do centro."
+    },
+    
+    {
+        id: 7,
+        title: "Sítio Rural na linha 128",
+        price: "R$ 1.250.000",
+        image: "C:\Users\ellen\Downloads\Lote Rural na linha 128.jpg",
+        description: "Lote de 24,00 hectares, com pasto formado, casa, cural e curso de água para os animais. Localizado a 15 minutos da cidade"
+    }
+    // Adicione mais imóveis aqui
+];
+
+// Função para obter parâmetros da URL
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+// Carregar os detalhes do imóvel na página de detalhes
+function loadPropertyDetails() {
+    const propertyId = getQueryParam('id');
+    const property = imoveis.find(imovel => imovel.id == propertyId);
+
+    if (property) {
+        document.getElementById('property-title').textContent = property.title;
+        document.getElementById('property-price').textContent = `Preço: ${property.price}`;
+        document.getElementById('property-image').src = property.image;
+        document.getElementById('property-description').textContent = property.description;
+    } else {
+        document.getElementById('property-details').textContent = "Imóvel não encontrado.";
+    }
+}
+
+// Carregar os detalhes ao abrir a página de detalhes
+if (window.location.pathname.includes('detalhes.html')) {
+    loadPropertyDetails();
+}
+
+// script.js
+
+// Filtros na página principal
+function applyFilters() {
+    const tipoImovel = document.getElementById('tipo-imovel').value;
+    const localizacao = document.getElementById('localizacao').value.toLowerCase();
+    const precoMaximo = document.getElementById('preco').value;
+
+    const filteredImoveis = imoveis.filter(imovel => {
+        return (tipoImovel === 'todos' || imovel.title.toLowerCase().includes(tipoImovel)) &&
+               (!localizacao || imovel.description.toLowerCase().includes(localizacao)) &&
+               (!precoMaximo || parseInt(imovel.price.replace(/[^0-9]/g, '')) <= precoMaximo);
+    });
+
+    renderProperties(filteredImoveis);
+}
+
+// Renderizar imóveis na página principal
+function renderProperties(properties) {
+    const propertyList = document.querySelector('.property-list');
+    propertyList.innerHTML = ''; // Limpar lista
+
+    properties.forEach(property => {
+        const propertyItem = `
+            <div class="property-item">
+                <img src="${property.image}" alt="Imagem do Imóvel">
+                <h4>${property.title}</h4>
+                <p>${property.price}</p>
+                <a href="detalhes.html?id=${property.id}" class="btn">Ver mais detalhes</a>
+                <button>Agendar visita</button>
+            </div>
+        `;
+        propertyList.innerHTML += propertyItem;
+    });
+
+    if (properties.length === 0) {
+        propertyList.innerHTML = '<p>Nenhum imóvel encontrado.</p>';
+    }
+}
+
+// Aplicar filtros ao enviar o formulário
+document.getElementById('search-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    applyFilters();
+});
+
+// Renderizar todos os imóveis ao carregar a página principal
+if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
+    renderProperties(imoveis);
+}
+// script.js
+
+// Dados dos imóveis 
+const imóveis = [
+    {
+        id: 1,
+        title: "Casa no Bairro Vista Alegre",
+        price: "R$ 450.000",
+        image: "https://via.placeholder.com/500",
+        description: "Casa com 120,00m², com 3 quartos, 2 banheiros, sala, área de serviço, cozinha e uma área verde. Próximo a centro de compra e serviços. Possibilidade de financiamento pela Caixa."
+    },
+    // ... outros imóveis
+];
+
+// Função para obter parâmetros da URL
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+// Carregar os detalhes do imóvel na página de detalhes
+function loadPropertyDetails() {
+    const propertyId = getQueryParam('id');
+    const property = imoveis.find(imovel => imovel.id == propertyId);
+
+    if (property) {
+        document.getElementById('property-title').textContent = property.title;
+        document.getElementById('property-price').textContent = `Preço: ${property.price}`;
+        document.getElementById('property-image').src = property.image;
+        document.getElementById('property-description').textContent = property.description;
+    } else {
+        document.getElementById('property-details').textContent = "Imóvel não encontrado.";
+    }
+}
+
+// Carregar os detalhes ao abrir a página de detalhes
+if (window.location.pathname.includes('detalhes.html')) {
+    document.addEventListener('DOMContentLoaded', loadPropertyDetails);
+}
+
+if (window.location.pathname.includes('detalhes.html')) {
+    document.addEventListener('DOMContentLoaded', loadPropertyDetails);
+}
